@@ -1,0 +1,348 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: none !important;
+}
+
+.navigation {
+    border: none;
+    border-radius: 0;
+    margin-bottom: 0;
+}
+
+
+.main-content p {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+}
+
+.main-nav li a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+}
+
+.main-content .h1, .main-content .h3 {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.homepage-hero-module {
+    border-right: none;
+    border-left: none;
+    position: relative;
+}
+
+.no-video .video-container video,
+.touch .video-container video {
+    display: none;
+}
+
+.no-video .video-container .poster,
+.touch .video-container .poster {
+    display: block !important;
+}
+
+.video-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    background: rgba(146, 37, 135, 0.4);
+}
+
+.video-container .poster img {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+}
+
+.video-container .filter {
+    z-index: 1;
+    position: absolute;
+    background: rgba(146, 37, 135, 0.4);
+    width: 100%;
+    height: 100%;
+    color: #fff;
+}
+
+.video-container .filter .section-content p {
+    font-weight: 400;
+}
+
+.video-container .search-section {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+    color: #fff;
+}
+
+.video-container .search-section .form-control {
+    border-radius: 2px;
+}
+
+.video-container video {
+    position: absolute;
+    z-index: 0;
+    bottom: 0;
+}
+
+.video-container video.fillWidth {
+    width: 100%;
+}
+
+#about {
+    width: 100%;
+}
+
+.about-section {
+    background: #fff;
+    padding: 30px 0;
+}
+
+.about-section p {
+    line-height: 1.6;
+}
+
+.simply-btn {
+    color: #fff;
+    background: rgba(167, 125, 194, 1);
+    border: 1px solid rgba(167, 125, 194, 1);
+    border-radius: 2px;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.simply-btn:focus,
+.simply-btn:hover,
+.simply-btn:active {
+    outline: none !important;
+    color: #fff;
+    background: rgba(167, 125, 194, 1);
+    border: 1px solid rgba(167, 125, 194, 1);
+    border-radius: 2px;
+}
+
+.about-section .simply-btn {
+    margin-top: 20px;
+}
+
+.overlay-section {
+    width: 100%;
+    height: 0;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    right: 0;
+    top: 0;
+    transition: .5s ease-in-out;
+    background: #fff;
+    overflow-y: hidden;
+    overflow-x: visible;
+
+}
+
+.overlay-content {
+    position: relative;
+    width: 100%;
+    top: 15%;
+    font-family: "Josefin Sans", sans-serif;
+}
+
+.overlay-section .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 50px;
+    color: #616161;
+}
+
+.overlay-section .search-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 50px;
+    color: #616161;
+}
+
+.overlay-section .overlay-logo,
+.overlay-section .search-overlay-logo {
+    position: absolute;
+    top: 20px;
+    left: 45px;
+}
+
+.overlay-section .close-btn:hover,
+.overlay-section .close-btn:focus,
+.overlay-section .search-close-btn:hover,
+.overlay-section .search-close-btn:focus {
+    color: #616161;
+    text-decoration: none;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+.flex-item-one {
+    max-width: 800px;
+    width: 100%;
+    padding: 0 20px;
+}
+
+.flex-item-two {
+    max-width: 800px;
+    width: 100%;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.flex-item-two .ad-info {
+    border-bottom: 1px solid #ddd;
+}
+
+.flex-item-two .ad-info .checkbox {
+    position: relative;
+    top: 12px;
+    left: 20px;
+}
+
+.flex-item-two .ad-info:last-of-type {
+    border-bottom: none;
+}
+
+.flex-item-one .form-control {
+    border-radius: 2px;
+}
+
+.flex-item-one .form-group label {
+    font-size: 18px;
+}
+
+.flex-item-one .form-control:focus,
+.flex-item-one .form-control:active,
+.flex-item-one .form-control:focus,
+.flex-item-one .form-control:active {
+    box-shadow: none !important;
+    -webkit-box-shadow: none !important;
+}
+
+.about-section .heading-light:first-of-type {
+    padding-top: 0;
+}
+
+.heading-light {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 400;
+    font-size: 40px;
+    padding: 30px 0;
+}
+
+.ad-amount .h2 {
+    margin-bottom: 15px;
+    margin-top: 5px;
+}
+
+.amount {
+    color: green;
+    font-family: 'PT Sans Narrow', sans-serif;
+}
+
+#search-overlay .overlay-content {
+    top: 12%;
+}
+
+#ad-info-text {
+    margin-bottom: 20px;
+}
+
+@media screen and (min-width: 320px) {
+
+    .about-section .center-block {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-container .filter .section-content .text{
+        padding: 0 15px;
+    }
+
+    .video-container .filter .section-content .h1 {
+        font-size: 27px;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-weight: 600;
+    }
+}
+
+@media screen and (min-width: 360px) {
+
+    .about-section .center-block {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-container .filter .section-content .text {
+        padding: 100px 10px 0;
+    }
+
+    .video-container .filter .section-content .h1 {
+        font-size: 27px;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-weight: 600;
+    }
+}
+
+@media screen and (min-width: 768px) {
+
+    .about-section .center-block {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .video-container .filter .section-content .text {
+        padding: 200px 100px 0;
+    }
+
+    .video-container .filter .section-content .h1 {
+        font-size: 75px;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-weight: 600;
+    }
+}
+
+@media screen and (min-width: 1170px) {
+
+    .about-section .center-block {
+        margin-left: 150px;
+        margin-right: 150px;
+    }
+
+    .video-container .filter .section-content .text{
+        padding: 100px 100px 0;
+    }
+
+    .video-container .filter .section-content .h1 {
+        font-size: 75px;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-weight: 600;
+    }
+}
