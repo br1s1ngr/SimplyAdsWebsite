@@ -5,7 +5,6 @@
 }
 
 <section class="overlay-section" id="overlay">
-    <a href="javascript:void(0)" class="overlay-logo"><img alt="" src="~/Assets/logo.png" width="200px" height="50px"></a>
     <a href="javascript:void(0)" class="close-btn">&times;</a>
 
     <div class="overlay-content">
@@ -47,6 +46,7 @@
                                 <label class="text-left">Phone Number</label>
                                 <input class="form-control" type="tel" id="CustomerPhone" name="CustomerPhone" required
                                        data-parsley-trigger="focusout change keyup">
+                                @Html.ValidationMessageFor(x => x.CustomerPhone)
                             </div>
 
                         </div>
@@ -88,7 +88,7 @@
                         <div class="col-xs-6">
                             <div class="form-group">
                                 <label class="text-left">Start Date</label>
-                                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", @readonly = "readonly", data_parsley_trigger = "focusout change keyup" })
+                                @Html.TextBoxFor(model => model.StartDate, new { @class = "form-control", @readonly = "readonly", data_parsley_trigger = "focusout change keyup", required="required" })
                                 @*<input class="form-control" type="date" name="start_date" required
                                     data-parsley-trigger="focusout change keyup">*@
                             </div>
@@ -119,8 +119,7 @@
 
 <section class="overlay-section" id="search-overlay">
     <a href="javascript:void(0)" class="search-overlay-logo">
-        <img alt="" src="~/Assets/logo.png" width="200px"
-             height="50px">
+        <img alt="" src="~/Assets/logo.png" class="logo">
     </a>
     <a href="javascript:void(0)" class="search-close-btn">&times;</a>
 
@@ -286,7 +285,7 @@
                             <div class="col-sm-12 text-center">
                                 <div class="text">
                                     <div class="h1 text-uppercase">
-                                        Have you met <span style="color: rgba(167, 125, 194, 1)">SimplyAds</span>?
+                                        Have you met <span style="color: rgba(251, 114, 96, 1)">SimplyAds</span>?
                                     </div>
                                     <p>
                                         SimplyAds is a digital taxi-top advertising channel which plays ads in a
@@ -342,7 +341,7 @@
             <div class="center-block">
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="h2 heading-light">What is SimplyAd?</div>
+                        <div class="h2 heading-light">What is SimplyAds?</div>
                         <p class="text-muted">
                             SimplyAds is a digital taxi-top advertising channel which plays ads in
                             a geo-targeted and daily-parted
@@ -354,7 +353,7 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="h2 heading-light">Why SimplyAd?</div>
+                        <div class="h2 heading-light">Why SimplyAds?</div>
                     </div>
                 </div>
 
@@ -364,7 +363,7 @@
 
                         <div class="h3">Pay as you Go</div>
                         <p class="text-muted">
-                            SimplyAd is a digital taxi-top advertising channel which plays ads in
+                            SimplyAds is a digital taxi-top advertising channel which plays ads in
                             a geo-targeted and daily-parted
                             manner, publishing the right message to the right audience in the right time and
                             place.
@@ -375,7 +374,7 @@
 
                         <div class="h3">Location and Time based</div>
                         <p class="text-muted">
-                            SimplyAd is a digital taxi-top advertising channel which plays ads in
+                            SimplyAds is a digital taxi-top advertising channel which plays ads in
                             a geo-targeted and daily-parted
                             manner, publishing the right message to the right audience in the right time and
                             place.
@@ -386,7 +385,7 @@
 
                         <div class="h3">Get more from Ads</div>
                         <p class="text-muted">
-                            SimplyAd is a digital taxi-top advertising channel which plays ads in
+                            SimplyAds is a digital taxi-top advertising channel which plays ads in
                             a geo-targeted and daily-parted
                             manner, publishing the right message to the right audience in the right time and
                             place.
@@ -415,40 +414,44 @@
     @Scripts.Render("~/bundles/jqueryval")
 
     <script>
-        $(document).ready(function () {
+    $(document).ready(function () {
+
+        //var xx = @ViewBag.ShowAlert;
+        @if (ViewBag.ShowAlert){
+        @:        alert('@TempData["ErrorMessage"]');
+        }
+
+        $('.search-overlay-btn').click(openSearchOverlay);
+
+        function openSearchOverlay() {
+            var searchReferenceNumber = $('#search_ad_ref').val();
+            //console.log(searchReferenceNumber);
+
+            $.get ("@Url.Action("SearchForAdvert", "Home")",
+                 { referenceNo: searchReferenceNumber })
+            .done (function(data) {
+                var jsonData = JSON.parse(data);
+                $("#currentAdTotalPrice").html(jsonData.Amount);
+                $("#currentAdRefNo").html(jsonData.RefNo);
+                $("#currentAdName").html(jsonData.Name);
+                $("#currentAdEmail").html(jsonData.Email);
+                $("#currentAdPhone").html(jsonData.Phone);
+                $("#currentAdStartDate").html(jsonData.Start);
+                $("#currentAdEndDate").html(jsonData.End);
+                $("#currentAdDuration").html(jsonData.Duration);
+                $("#currentAdCars").html(jsonData.Cars);
+                $("#currentAdUrgent").prop("checked", jsonData.Urgent);
+                $("#currentAdTreated").prop("checked", jsonData.Treated);
+                //console.log(jsonData);
+            });
+
+            $("#search-overlay").css('height', '100%');
+        }
 
 
-            $('.search-overlay-btn').click(openSearchOverlay);
 
-            function openSearchOverlay() {
-                var searchReferenceNumber = $('#search_ad_ref').val();
-                //console.log(searchReferenceNumber);
-
-                $.get ("@Url.Action("SearchForAdvert", "Home")",
-                     { referenceNo: searchReferenceNumber })
-                .done (function(data) {
-                    var jsonData = JSON.parse(data);
-                    $("#currentAdTotalPrice").html(jsonData.Amount);
-                    $("#currentAdRefNo").html(jsonData.RefNo);
-                    $("#currentAdName").html(jsonData.Name);
-                    $("#currentAdEmail").html(jsonData.Email);
-                    $("#currentAdPhone").html(jsonData.Phone);
-                    $("#currentAdStartDate").html(jsonData.Start);
-                    $("#currentAdEndDate").html(jsonData.End);
-                    $("#currentAdDuration").html(jsonData.Duration);
-                    $("#currentAdCars").html(jsonData.Cars);
-                    $("#currentAdUrgent").prop("checked", jsonData.Urgent);
-                    $("#currentAdTreated").prop("checked", jsonData.Treated);
-                    //console.log(jsonData);
-                });
-
-                $("#search-overlay").css('height', '100%');
-            }
-
-
-
-            $('.cars').on('change',  getPriceWithAjax);
-            @*function () {
+        $('.cars').on('change',  getPriceWithAjax);
+        @*function () {
                 var carValue = this.value;
                 $.get('@Url.Action("GetCarPrice", "Home")', { carText: carValue })
                 .done(function (data) {
@@ -460,8 +463,8 @@
                 });
             });*@
 
-            $('.duration').on('change',  getPriceWithAjax);
-            @*function () {
+        $('.duration').on('change',  getPriceWithAjax);
+        @*function () {
                 var durationValue = this.value;
                 $.get('@Url.Action("GetDurationPrice", "Home")', { durationText: durationValue })
                 .done(function (data) {
@@ -473,8 +476,8 @@
                 });
             });*@
 
-            $('#content').on('change', getPriceWithAjax);
-            @*function () {
+        $('#content').on('change', getPriceWithAjax);
+        @*function () {
                 console.log('size ' + ( this.files[0].size || 0));
                 if (content.files[0] == null) {
                     var prevContentValue = Number.parseFloat($('#prevContentVal').val()) || 0;
@@ -495,59 +498,59 @@
                 }
             });*@
 
-            $('#StartDate').datepicker({
-                dateFormat: "dd/M/yy",
-                minDate: new Date(@DateTime.UtcNow.AddHours(1).AddDays(14).Year,
-                    @(DateTime.UtcNow.AddHours(1).AddDays(14).Month - 1), @DateTime.UtcNow.AddHours(1).AddDays(14).Day),
+        $('#StartDate').datepicker({
+            dateFormat: "dd/M/yy",
+            minDate: new Date(@DateTime.UtcNow.AddHours(1).AddDays(14).Year,
+                @(DateTime.UtcNow.AddHours(1).AddDays(14).Month - 1), @DateTime.UtcNow.AddHours(1).AddDays(14).Day),
+        });
+
+        $('#Urgent').on('click',
+            function() {
+                if (this.checked){
+                    $('#StartDate').datepicker(
+                        "change",
+                        { minDate: new Date(@DateTime.UtcNow.AddHours(1).Year,
+                        @(DateTime.UtcNow.AddHours(1).Month - 1), @DateTime.UtcNow.Day) }
+                    );
+                }
+                else {
+                    $('#StartDate').datepicker(
+                        "change",
+                        {
+                            minDate:  new Date(@DateTime.UtcNow.AddHours(1).AddDays(14).Year,
+                                    @(DateTime.UtcNow.AddHours(1).AddDays(14).Month - 1),
+                                    @DateTime.UtcNow.AddHours(1).AddDays(14).Day)
+                        }
+                    );
+                }
+                getPriceWithAjax();
             });
 
-            $('#Urgent').on('click',
-                function() {
-                    if (this.checked){
-                        $('#StartDate').datepicker(
-                            "change",
-                            { minDate: new Date(@DateTime.UtcNow.AddHours(1).Year,
-                            @(DateTime.UtcNow.AddHours(1).Month - 1), @DateTime.UtcNow.Day) }
-                        );
-                    }
-                    else {
-                        $('#StartDate').datepicker(
-                            "change",
-                            {
-                                minDate:  new Date(@DateTime.UtcNow.AddHours(1).AddDays(14).Year,
-                                        @(DateTime.UtcNow.AddHours(1).AddDays(14).Month - 1),
-                                        @DateTime.UtcNow.AddHours(1).AddDays(14).Day)
-                            }
-                        );
-                    }
-                    getPriceWithAjax();
-                });
+        function getPriceWithAjax() {
+            var urgent =  $('#Urgent').prop('checked');
+            var duration = $('#Duration').val();
+            var noOfCars = $('.cars').val();
+            var regEx = /(?:\.([^.]+))?$/;
+            //var contentType = regEx.exec($('#content').val());
+            //alert ($('#content').val());
+            var contentType = "";
+            if ( $('#content').val() != undefined)
+                contentType= $('#content').val().slice(($('#content').val().lastIndexOf(".") - 1 >>> 0) + 2);
+            else
+                contentType = "";
+            //console.log("urgent => " + urgent) ;
+            //console.log("duration => " + duration) ;
+            //console.log("noOfCars => " + noOfCars) ;
+            //console.log("contentType => " + contentType);
 
-            function getPriceWithAjax() {
-                var urgent =  $('#Urgent').prop('checked');
-                var duration = $('#Duration').val();
-                var noOfCars = $('.cars').val();
-                var regEx = /(?:\.([^.]+))?$/;
-                //var contentType = regEx.exec($('#content').val());
-                //alert ($('#content').val());
-                var contentType = "";
-                if ( $('#content').val() != undefined)
-                    contentType= $('#content').val().slice(($('#content').val().lastIndexOf(".") - 1 >>> 0) + 2);
-                else
-                    contentType = "";
-                //console.log("urgent => " + urgent) ;
-                //console.log("duration => " + duration) ;
-                //console.log("noOfCars => " + noOfCars) ;
-                //console.log("contentType => " + contentType);
+            $.get ("@Url.Action("CalculateAdvertPrice", "Home")",
+                  { Duration:duration, NoOfCars:noOfCars, Urgent:urgent, ContentExtension: contentType })
+            .done (function(data) {
+                $('#totalPrice').html(data);
+            });
 
-                $.get ("@Url.Action("CalculateAdvertPrice", "Home")",
-                      { Duration:duration, NoOfCars:noOfCars, Urgent:urgent, ContentExtension: contentType })
-                .done (function(data) {
-                    $('#totalPrice').html(data);
-                });
+        }
 
-            }
-
-        });
+    });
     </script>
 }

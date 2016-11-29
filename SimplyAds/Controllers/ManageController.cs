@@ -11,7 +11,7 @@ using SimplyAds.Models;
 namespace SimplyAds.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : TempController
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;

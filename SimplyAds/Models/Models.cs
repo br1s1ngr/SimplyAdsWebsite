@@ -98,17 +98,17 @@ namespace SimplyAds.Models
 
         public string getBackgroundColor()
         {
-            if (Treated && EndDate >= DateTime.UtcNow.AddHours(1))
-                return "amber";
-            else if (Treated)
-                return "green";
-            else if (Urgent && StartDate.Value.Date < DateTime.UtcNow.AddHours(1).Date)
-                return "orange";
-            else if (Urgent)
-                return "red";
-            else
-                return "yellow";
-
+            if (Urgent && !Treated)
+                return "red";  //urgent and !treated
+            else if (!Treated)
+                return "#FF4500"; //not treated ORANGE RED
+            else if (Treated && StartDate.Value.Date > DateTime.UtcNow.AddHours(1).Date)
+                return "#FFae42";   //treated and abt to start      ORANGE YELLOW
+            else if (EndDate >= DateTime.UtcNow.AddHours(1) && StartDate <= DateTime.UtcNow.AddHours(1))
+                return "yellow";  //running
+            else if (EndDate < DateTime.UtcNow.AddHours(1))
+                return "green"; //done
+            else return "";
         }
     }
 
@@ -125,9 +125,9 @@ namespace SimplyAds.Models
     {
         [Required]
         public string CustomerName { get; set; }
-        [Required]
+        [Required, RegularExpression(@"\d{11}", ErrorMessage = "please enter valid phone number e.g 08081112222")]
         public string CustomerPhone { get; set; }
-        [Required]
+        //[Required]
         public bool Urgent { get; set; }
         [Required]
         public string Duration { get; set; }
@@ -162,5 +162,12 @@ namespace SimplyAds.Models
         {
             return CarCharge + DurationCharge + UrgentAdCharge + ContentChage;
         }
+    }
+
+    public class BreakDown
+    {
+        public int ID { get; set; }
+        public int Counter { get; set; }
+        
     }
 }

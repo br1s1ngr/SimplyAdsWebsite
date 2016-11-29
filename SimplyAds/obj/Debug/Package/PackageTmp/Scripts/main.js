@@ -15,6 +15,16 @@ $(function () {
         scaleBannerVideoSize('.video-container video');
     });
 
+    $(window).on('scroll', function() {/*
+        $('.search-section').css('display', 'block');*/
+        $('.navigation').css({background: '#fff', boxShadow: '0 1px 0 0 rgba(0, 0, 0, .05), 0 2px 4px 0 rgba(0, 0, 0, .06)'});
+        $('#main-nav').find('a').css({color: '#333'});
+        if ($(window).scrollTop() === 0) {
+            $('.navigation').css({background: 'transparent', boxShadow: 'none'});
+            $('#main-nav').find('a').css({color: '#fff'});
+        }
+    });
+
     $('a[href*="#"]:not([href="#"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
             var target = $(this.hash);
@@ -32,7 +42,7 @@ $(function () {
     $('.close-btn').click(closeOverlay);
 
 
-    //$('.search-overlay-btn').click(openSearchOverlay);
+    $('.search-overlay-btn').click(openSearchOverlay);
     $('.search-close-btn').click(closeSearchOverlay);
 
     $('.overlay-logo').click(function () {
@@ -47,7 +57,6 @@ $(function () {
         $(window).scrollTop(0);
     });
 
-    $('.main-content').singlefull();
 });
 
 function openOverlay() {
@@ -60,12 +69,9 @@ function closeOverlay() {
 }
 
 
-//function openSearchOverlay() {
-
-
-    //$("#search-overlay").css('height', '100%');
-
-
+function openSearchOverlay() {
+    $("#search-overlay").css('height', '100%');
+}
 
 /* Close when someone clicks on the "x" symbol inside the overlay */
 function closeSearchOverlay() {

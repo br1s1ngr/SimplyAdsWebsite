@@ -13,7 +13,7 @@
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-default navigation">
+        <nav class="navbar navbar-default navbar-fixed-top navigation js-navigation">
             <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -24,7 +24,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="/">
-                        <img src="~/Assets/logo_2.jpg" style="height:30%"/>
+                        <img alt="" src="~/Assets/logo.png" class="logo">
                     </a>
                 </div>
 
@@ -32,18 +32,20 @@
                     <ul class="nav navbar-nav navbar-right main-nav">
                         @if (!Request.IsAuthenticated)
                         {
-                            <li><a href="#home" class="text-uppercase">Home</a></li>
-                            <li><a href="#about" class="text-uppercase">About Us</a></li>
+                            <li><a href="#home" style="color: rgba(64,224,208,0.8); font-weight: 700;" class="text-uppercase nav-link">Home</a></li>
+                            <li><a href="#about" style="color: rgba(64,224,208, 0.8); font-weight: 700;" class="text-uppercase nav-link">About Us</a></li>
+                            <li>@Html.ActionLink("Log In", "Login", "Account", null,new {style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
                         }
-                        @Html.Partial("_LoginPartial")
+                        @*@Html.Partial("_LoginPartial")*@
                     </ul>
                     @if (User.IsInRole("Admin"))
                     {
                         <ul class="nav navbar-nav navbar-right main-nav">
-                            <li>@Html.ActionLink("Adverts", "AllAdverts", "Admin")</li>
-                            <li>@Html.ActionLink("Car", "Index", "Car")</li>
-                            <li>@Html.ActionLink("Content", "Index", "ContentPricing")</li>
-                            <li>@Html.ActionLink("Duration", "Index", "Duration")</li>
+                            <li>@Html.ActionLink("Adverts", "AllAdverts", "Admin",null, new { style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
+                            <li>@Html.ActionLink("Car", "Index", "Car", null, new { style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
+                            <li>@Html.ActionLink("Content", "Index", "ContentPricing", null, new { style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
+                            <li>@Html.ActionLink("Duration", "Index", "Duration", null, new { style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
+                            <li>@Html.ActionLink("Log Out", "LogOff", "Account",null, new { style = "color: rgba(64,224,208, 0.8); font-weight: 700;" })</li>
                         </ul>
                     }
                 </div>
@@ -89,16 +91,90 @@
         </footer>
     </div>*@
     <main class="main-content">
-        @RenderBody();
+        @RenderBody()
+
+        <footer class="footer hidden-xs">
+            <div class="container">
+                <div class="text-center">
+                    <div class="center-block">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <a href="#home"><img src="~/Assets/logo.png" class="logo"></a>
+                                <small class="text-muted block">&copy; Copyright 2016. All Rights Reserved.</small>
+                                <small class="text-muted block">Lagos, Nigeria</small>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-unstyled footer-nav-links" id="footer-nav-links-one">
+                                    <li class="text-left"><a href="#home">Home</a></li>
+                                    <li class="text-left"><a href="#about">About</a></li>
+                                    <li class="text-left"><a id="create-link" class="js-overlay-btn">Create Ad</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-unstyled footer-nav-links" id="footer-nav-links-two">
+                                    <li class="text-left"><a href="#">Terms</a></li>
+                                    <li class="text-left"><a href="#about">Privacy Policy</a></li>
+                                    <li class="text-left"><a href="#">Help Center</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-sm-3">
+                                <ul class="list-unstyled">
+                                    <li><b>Social Links</b></li>
+                                    <li class="social-links">
+                                        <a href="" class="text-left"><img src="assets/twitter.svg"></a>
+                                        <a href="" class="text-left"><img src="assets/facebook.svg"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <footer class="footer hidden-sm hidden-md hidden-lg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-3">
+                        <a href="#home"><img src="~/Assets/logo.png" class="logo"></a>
+                        <small class="text-muted block">&copy; Copyright 2016. All Rights Reserved.</small>
+                        <small class="text-muted block">Lagos, Nigeria</small>
+                    </div>
+                    <div class="col-xs-3">
+                        <ul class="list-unstyled footer-nav-links">
+                            <li class="text-left"><a href="#home">Home</a></li>
+                            <li class="text-left"><a href="#about">About</a></li>
+                            <li class="text-left"><a id="create-link-two" class="js-overlay-btn">Create Ad</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-3">
+                        <ul class="list-unstyled footer-nav-links">
+                            <li class="text-left"><a href="#">Terms</a></li>
+                            <li class="text-left"><a href="#about">Privacy Policy</a></li>
+                            <li class="text-left"><a href="#">Help Center</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-xs-3">
+                        <ul class="list-unstyled">
+                            <li><b>Social Links</b></li>
+                            <li class="social-links">
+                                <a href="" class="text-left"><img src="assets/twitter.svg"></a>
+                                <a href="" class="text-left"><img src="assets/facebook.svg"></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </main>
-    <hr />
+    @*<hr />
     <footer class="nav navbar-inverse">
         <div class="container">
             <div class="row">
                 <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
             </div>
         </div>
-    </footer>
+    </footer>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

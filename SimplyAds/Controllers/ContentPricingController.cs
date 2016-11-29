@@ -13,7 +13,7 @@ using PagedList;
 namespace SimplyAds.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class ContentPricingController : Controller
+    public class ContentPricingController : TempController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 

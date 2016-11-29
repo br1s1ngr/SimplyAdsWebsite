@@ -10,7 +10,7 @@ using System;
 namespace SimplyAds.Controllers
 {
     [Authorize(Roles = "Admin")]
-    public class AdminController : Controller
+    public class AdminController : TempController
     {
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: Admin
@@ -37,12 +37,12 @@ namespace SimplyAds.Controllers
         public async Task<ActionResult> SelectedAd(string referenceNo)
         {
             Advert advert;
-
             if (Request.IsAjaxRequest())
             {
                 advert = await getAdvert(referenceNo);
-                return PartialView("", advert);
+                return PartialView(advert);
             }
+            ViewBag.Layout = "~/Views/Shared/_LayoutPage.cshtml";
             advert = await getAdvertWithUpdates(referenceNo);
             return View(advert);
         }

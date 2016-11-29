@@ -12,7 +12,7 @@ namespace SimplyAds.Misc
 {
     public static class PayStackAPI
     {
-        const string SECRET_KEY = "sk_test_a369777638adcda058592959a2716543e0861b6f";
+        const string SECRET_KEY = "sk_test_4cf2b0a1f4b5eef7e0802c4824ed6b80da2a02b8";
         const string PUBLIC_KEY = "";
 
         public static async Task<string> CreatePlan(string planName, string planDescription, int planAmount)

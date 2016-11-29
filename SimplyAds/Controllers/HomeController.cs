@@ -12,12 +12,13 @@ using SimplyAds.Misc;
 
 namespace SimplyAds.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : TempController
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
         public async Task<ActionResult> Index()
         {
+            ViewBag.ShowAlert = ViewBag.ShowAlert ?? false;
             await setViewBagDetailsForCarAndDuration();
             return View();
         }
@@ -26,6 +27,7 @@ namespace SimplyAds.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> GetPrice(HttpPostedFileBase content, AdvertViewModel ad)
         {
+            ViewBag.ShowAlert = false;
             await setViewBagDetailsForCarAndDuration();
             if (ModelState.IsValid)
             {
@@ -65,7 +67,8 @@ namespace SimplyAds.Controllers
 
                     if (String.IsNullOrWhiteSpace(trxResult))
                     {
-                        TempData["AdErrorMsg"] = "Error...an error occurred while trying to place your advert, Please retry.";
+                        ViewBag.ShowAlert = true;
+                        TempData["ErrorMessage"] = "Error...an error occurred while trying to place your advert, Please retry.";
                         return RedirectToAction("Index", ad);
                     }
                     var tempString = trxResult.Split('%');
@@ -86,9 +89,13 @@ namespace SimplyAds.Controllers
                     //    TempData["AdErrorMsg"] = exception.Message;
                     //}
                 }
-                TempData["AdErrorMsg"] = "invalid date.";
+                ViewBag.ShowAlert = true;
+                TempData["ErrorMessage"] = "invalid date.";
             }
-            return RedirectToAction("Index", ad);
+            ViewBag.ShowAlert = true;
+            TempData["ErrorMessage"] = "invalid values entered.";
+            //return RedirectToAction("Index", ad);
+            return View("Index", null);
         }
 
         public async Task<ActionResult> Advert(string referenceNo)

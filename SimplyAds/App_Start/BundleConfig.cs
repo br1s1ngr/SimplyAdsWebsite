@@ -42,6 +42,7 @@ namespace SimplyAds
                       "~/Content/ionicons.min.css",
                       "~/Content/jquery.singlefull.min.css",
                       "~/Content/parsley.css",
+                      "~/Content/animate.min.css",
                       "~/Content/style.css"));
 
             bundles.Add(new StyleBundle("~/Content/jqueryui").Include(

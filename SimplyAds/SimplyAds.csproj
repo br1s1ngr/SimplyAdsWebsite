@@ -184,6 +184,7 @@
     <Compile Include="Controllers\DurationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TempController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -204,14 +205,16 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\facebook.svg" />
     <Content Include="Assets\Home-And-Away.jpg" />
     <Content Include="Assets\Home-And-Away.mp4" />
     <Content Include="Assets\img1.svg" />
     <Content Include="Assets\img2.svg" />
     <Content Include="Assets\logo.png" />
-    <Content Include="Assets\logo_2.jpg" />
     <Content Include="Assets\map.svg" />
+    <Content Include="Assets\twitter.svg" />
     <Content Include="Audio\AlarmSound.mp3" />
+    <Content Include="Content\animate.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -269,6 +272,7 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Assets\Home-And-Away.webm" />
+    <None Include="Properties\PublishProfiles\simplyadsng.com - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\trendyfix.com - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.12.4.intellisense.js" />
     <Content Include="Scripts\jquery-1.12.4.js" />
@@ -352,6 +356,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Temp\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

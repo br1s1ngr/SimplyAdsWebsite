@@ -33,6 +33,8 @@ namespace SimplyAds.Models
         public DbSet<AdContent> AdContent { get; set; }
         public DbSet<AdUpdate> AdUpdates { get; set; }
 
+        //public DbSet<BreakDown> BreakDown { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

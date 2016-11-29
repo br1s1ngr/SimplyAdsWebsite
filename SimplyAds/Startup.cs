@@ -9,12 +9,13 @@ namespace SimplyAds
 {
     public partial class Startup
     {
+        
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
-            createRolesAndUser();
+            createRolesAndUser();            
         }
-
+        
         private void createRolesAndUser()
         {
             ApplicationDbContext context = new ApplicationDbContext();

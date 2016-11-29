@@ -107,25 +107,31 @@
             </tr>
 }
     </table>
-    @if (Model.ElementAt(0) != null &&
+    @if (Model.Count > 0)
+    {
+        if (Model.ElementAt(0) != null &&
         (@Model.ElementAt(0).DatePlaced.AddHours(2) >= DateTime.UtcNow.AddHours(1)) &&
         !Model.ElementAt(0).Treated)
-    {
-        <audio autoplay loop>
-            <source src="~/Audio/AlarmSound.mp3" type="audio/mp3" />
-        </audio>
+        {
+            <audio autoplay loop>
+                <source src="~/Audio/AlarmSound.mp3" type="audio/mp3" />
+            </audio>
+        }
     }
 </div>
-Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
-@Model.PageCount
-@Html.PagedListPager(Model, page => Url.Action("AllAdverts", "Admin",  new { page }))
+<div style="margin-bottom:50px;">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of
+    @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("AllAdverts", "Admin", new { page }))
+</div>
+
 
 @section Scripts {
         @*<script src="~/Scripts/notiModal.min.js" type="text/javascript"></script>*@
         <script>
             $(window).on('load', function () {
                 window.setTimeout(function () {
-                    location.reload(); }, 300000);
+                    location.reload(); }, 600000);
             });
 
             $(document).ready(function () {

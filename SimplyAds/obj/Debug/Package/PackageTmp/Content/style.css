@@ -12,14 +12,15 @@ body {
     height: 100%;
     position: absolute;
     background: none !important;
+    font-family: 'Josefin Sans', sans-serif;
 }
 
 .navigation {
     border: none;
     border-radius: 0;
     margin-bottom: 0;
+    background: transparent;
 }
-
 
 .main-content p {
     font-family: 'Josefin Sans', sans-serif;
@@ -27,14 +28,21 @@ body {
     font-size: 20px;
 }
 
-.main-nav li a {
+#main-nav li a {
     font-family: 'Josefin Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 400;
     font-size: 16px;
+    color: #fff;
 }
 
 .main-content .h1, .main-content .h3 {
     font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.logo {
+    position: relative;
+    bottom: 10px;
+    width: 120px;
 }
 
 .homepage-hero-module {
@@ -60,7 +68,7 @@ body {
     height: 100%;
     width: 100%;
     overflow: hidden;
-    background: rgba(146, 37, 135, 0.4);
+    background: rgba(25, 29, 34, 0.75);
 }
 
 .video-container .poster img {
@@ -72,7 +80,7 @@ body {
 .video-container .filter {
     z-index: 1;
     position: absolute;
-    background: rgba(146, 37, 135, 0.4);
+    background: rgba(25, 29, 34, 0.75);
     width: 100%;
     height: 100%;
     color: #fff;
@@ -83,7 +91,8 @@ body {
 }
 
 .video-container .search-section {
-    position: absolute;
+    position: fixed;
+    display: none;
     bottom: 0;
     width: 100%;
     height: auto;
@@ -95,6 +104,10 @@ body {
 
 .video-container .search-section .form-control {
     border-radius: 2px;
+}
+
+.video-container .search-section .input-group {
+    padding: 0 15%;
 }
 
 .video-container video {
@@ -122,8 +135,8 @@ body {
 
 .simply-btn {
     color: #fff;
-    background: rgba(167, 125, 194, 1);
-    border: 1px solid rgba(167, 125, 194, 1);
+    background: rgba(251, 114, 96, 1);
+    border: 1px solid rgba(251, 114, 96, 1);
     border-radius: 2px;
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 700;
@@ -135,9 +148,10 @@ body {
 .simply-btn:active {
     outline: none !important;
     color: #fff;
-    background: rgba(167, 125, 194, 1);
-    border: 1px solid rgba(167, 125, 194, 1);
+    background: rgba(251, 114, 96, 1);
+    border: 1px solid rgba(251, 114, 96, 1);
     border-radius: 2px;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 4px 16px;
 }
 
 .about-section .simply-btn {
@@ -153,10 +167,8 @@ body {
     right: 0;
     top: 0;
     transition: .5s ease-in-out;
-    background: #fff;
-    overflow-y: hidden;
-    overflow-x: visible;
-
+    background: rgba(248, 248, 248, 0.8);
+    overflow: auto;
 }
 
 .overlay-content {
@@ -182,13 +194,6 @@ body {
     color: #616161;
 }
 
-.overlay-section .overlay-logo,
-.overlay-section .search-overlay-logo {
-    position: absolute;
-    top: 20px;
-    left: 45px;
-}
-
 .overlay-section .close-btn:hover,
 .overlay-section .close-btn:focus,
 .overlay-section .search-close-btn:hover,
@@ -205,7 +210,9 @@ body {
 .flex-item-one {
     max-width: 800px;
     width: 100%;
-    padding: 0 20px;
+    padding: 40px;
+    background: #fff;
+    border-radius: 5px;
 }
 
 .flex-item-two {
@@ -254,7 +261,7 @@ body {
     font-family: 'Josefin Sans', sans-serif;
     font-weight: 400;
     font-size: 40px;
-    padding: 30px 0;
+    padding: 30px 0 40px;
 }
 
 .ad-amount .h2 {
@@ -265,6 +272,50 @@ body {
 .amount {
     color: green;
     font-family: 'PT Sans Narrow', sans-serif;
+}
+
+.footer {
+    background: #F5F5F5;
+    padding: 30px 0;
+    border-top: 1px solid #D2D2D2;
+}
+
+.footer .center-block {
+    margin-left: 150px;
+    margin-right: 150px;
+
+}
+
+#footer-nav-links-one {
+    margin-left: 100px;
+}
+
+#footer-nav-links-two {
+    margin-left: 50px;
+}
+
+.footer-nav-links li a {
+    color: #9DA2A6;
+    padding-bottom: 10px;
+    font-weight: 400;
+}
+
+.footer-nav-links li a:hover,
+.footer-nav-links li a:focus {
+    color: #616366;
+    text-decoration: none;
+}
+
+.social-links {
+    padding-top: 5px;
+}
+
+.block {
+    display: block;
+}
+
+#create-link:hover, #create-link-two:hover {
+    cursor: pointer;
 }
 
 #search-overlay .overlay-content {
@@ -282,32 +333,95 @@ body {
         margin-right: auto;
     }
 
-    .video-container .filter .section-content .text{
-        padding: 0 15px;
-    }
-
     .video-container .filter .section-content .h1 {
         font-size: 27px;
         font-family: 'PT Sans Narrow', sans-serif;
         font-weight: 600;
     }
+
+    .video-container .search-section {
+        padding: 0 20px 10px;
+    }
+
+    .video-container .filter .section-content {
+        padding: 18% 0;
+    }
+
+    .video-container .search-section .input-group {
+        padding: 0;
+    }
+
+    .footer .logo {
+        width: 80px;
+    }
+
+    .navigation .navbar-collapse {
+        background: #fff;
+    }
+
+    .navigation .navbar-collapse.in #main-nav li a {
+        color: #333!important;
+    }
+
+    .navigation .navbar-toggle,
+    .navigation .navbar-toggle:focus {
+        background: transparent;
+        border: none;
+    }
+
+    .navigation .icon-bar {
+        height: 3px;
+    }
+
+    #main-nav li a {
+        color: #333;
+    }
 }
 
 @media screen and (min-width: 360px) {
+    .navigation .navbar-collapse {
+        background: #fff;
+    }
+
+    .navigation .navbar-collapse.in #main-nav li a {
+        color: #333;
+    }
+
+    .navigation .navbar-toggle,
+    .navigation .navbar-toggle:focus {
+        background: transparent;
+        border: none;
+    }
+
+    .navigation .icon-bar {
+        height: 3px;
+    }
+
+    .footer .logo {
+        width: 80px;
+    }
 
     .about-section .center-block {
         margin-left: auto;
         margin-right: auto;
     }
 
-    .video-container .filter .section-content .text {
-        padding: 100px 10px 0;
+    .video-container .filter .section-content {
+        padding: 40% 0;
     }
 
     .video-container .filter .section-content .h1 {
         font-size: 27px;
         font-family: 'PT Sans Narrow', sans-serif;
         font-weight: 600;
+    }
+
+    .video-container .search-section .input-group {
+        padding: 0;
+    }
+
+    #main-nav li a {
+        color: #333;
     }
 }
 
@@ -318,8 +432,8 @@ body {
         margin-right: auto;
     }
 
-    .video-container .filter .section-content .text {
-        padding: 200px 100px 0;
+    .video-container .filter .section-content {
+        padding: 35% 0;
     }
 
     .video-container .filter .section-content .h1 {
@@ -327,22 +441,87 @@ body {
         font-family: 'PT Sans Narrow', sans-serif;
         font-weight: 600;
     }
+
+    .video-container .filter .section-content p {
+        padding: 0;
+    }
+
+    .video-container .search-section .input-group {
+        padding: 0 15%;
+    }
+
+    .footer .center-block {
+        margin-left: 150px;
+        margin-right: 150px;
+
+    }
+
+    #footer-nav-links-one {
+        margin-left: 50px;
+    }
+
+    #footer-nav-links-two {
+        margin: 0;
+    }
+
+    .navigation .navbar-collapse {
+        background: none;
+    }
+
+    #main-nav li a {
+        color: #fff;
+    }
 }
 
 @media screen and (min-width: 1170px) {
+    .navigation .navbar-collapse {
+        background: none;
+    }
 
     .about-section .center-block {
         margin-left: 150px;
         margin-right: 150px;
     }
 
-    .video-container .filter .section-content .text{
-        padding: 100px 100px 0;
+    .video-container .filter .section-content {
+        padding: 18% 0;
     }
 
     .video-container .filter .section-content .h1 {
         font-size: 75px;
         font-family: 'PT Sans Narrow', sans-serif;
         font-weight: 600;
+    }
+
+    .video-container .filter .section-content p {
+        padding: 0;
+    }
+
+    .video-container .search-section .input-group {
+        padding: 0 15%;
+    }
+
+    .footer .center-block {
+        margin-left: 150px;
+        margin-right: 150px;
+
+    }
+
+    #footer-nav-links-one {
+        margin-left: 100px;
+    }
+
+    #footer-nav-links-two {
+        margin-left: 50px;
+    }
+
+    #main-nav li a {
+        color:  rgba(251, 114, 96, 1); 
+         font-weight:700;
+    }
+
+    .nav-link {
+         color:  rgba(251, 114, 96, 1); 
+         font-weight:700;
     }
 }

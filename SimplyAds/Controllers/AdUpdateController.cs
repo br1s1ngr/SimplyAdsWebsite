@@ -11,7 +11,7 @@ using SimplyAds.Models;
 
 namespace SimplyAds.Controllers
 {
-    public class AdUpdateController : Controller
+    public class AdUpdateController : TempController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
